@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lny_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:drawable/editbox_background_normal"
+    android:elevation="1dp"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/lyt_content_inps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <RelativeLayout
+            android:id="@+id/lyt_content_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left|center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/lyt_bar"
+                android:layout_width="10dp"
+                android:layout_height="75dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:visibility="gone"></LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyt_content_letters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorPrimaryDark"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_letters_inps"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle_center_transparent"
+                    android:gravity="center_horizontal|center"
+                    android:text="?"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="299dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="2dp">
+
+            <TextView
+                android:id="@+id/tv_title_insp"
+                android:layout_width="335dp"
+                android:layout_height="wrap_content"
+                android:text="Acoples"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_desc_insp"
+                    android:layout_width="252dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="$ 6.36"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_qty"
+            android:layout_width="94dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="QTY: 8"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_icon_insp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="?"
+            android:textAlignment="gravity"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</LinearLayout>

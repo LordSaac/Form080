@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:elevation="10dp"
+            android:minHeight="?attr/actionBarSize"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e6e7ee">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#e6e7ee"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/icon_person"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@"
+                    android:textSize="75sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="10dp"
+                    android:text="Durante los últimos días se han encontrados irregularidades en la planilla 080 de la asamblea nacional de Panamá,Aun así Se han encontrado cedulas de panameños que aparasen en la PLANILLA 080 de la asamblea nacional , pero nunca que han laborado para esta entidad, lamentablemente esta irregularidad puede afectar tu ficha de Seguro Social. \n\n Verifica si tu cédula  no aparece en la Planilla 080."
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="Ingrese cédula:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/edt_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="41dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:hint="Ejemplo 0-000-0000"
+                        android:inputType="textPersonName" />
+                </LinearLayout>
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/anim_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    app:lottie_autoPlay="true"
+                    app:lottie_rawRes="@raw/loading2">
+
+                </com.airbnb.lottie.LottieAnimationView>
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/button_primary"
+                    android:onClick="clickSearch"
+                    android:text="Verificar"
+                    android:textColor="@color/colorPrimary" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
