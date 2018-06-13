@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.jjapps.form080"
+        applicationId "xyz.goldapp.jjapps.form080"
         minSdkVersion 20
         targetSdkVersion 27
         versionCode 1
