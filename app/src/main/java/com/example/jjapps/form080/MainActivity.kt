@@ -1,5 +1,7 @@
 package com.example.jjapps.form080
 
+import android.content.Context
+import android.content.DialogInterface
 import android.graphics.Typeface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -40,9 +42,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        search = findViewById(R.id.edt_search)
-        iconPerson = findViewById(R.id.icon_person)
-        buttonValidate = findViewById(R.id.button)
+        search = this.findViewById(R.id.edt_search)
+        iconPerson = this.findViewById(R.id.icon_person)
+        buttonValidate = this.findViewById(R.id.button)
 
         val typeface = Typeface.createFromAsset(this.assets, FontManager.getRuteFASolid())
         iconPerson.setTypeface(typeface)
@@ -89,17 +91,11 @@ class MainActivity : AppCompatActivity() {
 
     fun clickSearch(view:View){
 
-
-        if (mInterstitialAd.isLoaded) {
-            mInterstitialAd.show()
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.")
-        }
-
         var ID: String = edt_search.text.toString()
         var isID:Boolean = GeneralHelper.validateIdPanama(ID)
 
         if(isID){
+            showAdmod() //<--- Gomez si quieres colocarlo en otro lado solo mueve este metodo (IMPORTANTE)
             buttonValidate.isEnabled = false
             getResult(ID)
         }
@@ -135,7 +131,7 @@ class MainActivity : AppCompatActivity() {
 
                         } catch (ex: Exception) {
                             buttonValidate.isEnabled = true
-                          GeneralHelper.simpleAlerts(this,"Error","Lo sentimos, ocurrio un error :(")
+                          simpleAlerts(this,"Error","Lo sentimos, ocurrio un error :(")
                         }
 
 
@@ -143,7 +139,7 @@ class MainActivity : AppCompatActivity() {
                 },
                 Response.ErrorListener { error ->
                     buttonValidate.isEnabled = true
-                    GeneralHelper.simpleAlerts(this,"Error","Lo sentimos, ocurrio un error :(")
+                    simpleAlerts(this,"Error","Lo sentimos, ocurrio un error :(")
                 }
         ) {
 
@@ -193,12 +189,33 @@ class MainActivity : AppCompatActivity() {
 
 
         btnOk.setOnClickListener(View.OnClickListener {
-            //your business logic
             deleteDialog.dismiss()
+            showAdmod()
         })
 
         deleteDialog.show()
     }
+
+    fun simpleAlerts(context: Context, title: String, sms:String){
+        val alertDialog = android.app.AlertDialog.Builder(context).create()
+        alertDialog.setTitle(title)
+        alertDialog.setMessage("\n"+sms)
+        alertDialog.setButton(android.app.AlertDialog.BUTTON_POSITIVE, "OK", DialogInterface.OnClickListener { dialog, which ->
+
+            dialog.dismiss()
+            showAdmod()})
+        alertDialog.show()
+    }
+
+    fun showAdmod(){
+        //your business logic
+        if (mInterstitialAd.isLoaded) {
+            mInterstitialAd.show()
+        } else {
+            Log.d("TAG", "The interstitial wasn't loaded yet.")
+        }
+    }
+
 
 
 
