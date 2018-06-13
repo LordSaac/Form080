@@ -1,4 +1,8 @@
 package com.example.jjapps.form080
+// @Date: 6/13/2018
+// @programmer: jGutierrez (LordSaac)
+// @Description: Esta clase se limita solo a la busqueda de personas en la Planilla 080 publicada por la asamblea de Panama..
+
 
 import android.content.Context
 import android.content.DialogInterface
