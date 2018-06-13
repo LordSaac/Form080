@@ -1,4 +1,4 @@
-package com.example.jjapps.form080
+package com.goldapp.jjapps.form080
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
