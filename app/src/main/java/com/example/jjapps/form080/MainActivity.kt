@@ -27,16 +27,16 @@ import com.example.jjapps.form080.utils.VolleySingleton
 
 class MainActivity : AppCompatActivity() {
 
-     private lateinit var search: EditText
+    private lateinit var search: EditText
     private lateinit var iconPerson: TextView
-    private lateinit var lottieAnimationView:LottieAnimationView
+    private lateinit var  buttonValidate: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         search = findViewById(R.id.edt_search)
         iconPerson = findViewById(R.id.icon_person)
-        lottieAnimationView = findViewById(R.id.anim_loading)
+        buttonValidate = findViewById(R.id.button)
 
         val typeface = Typeface.createFromAsset(this.assets, FontManager.getRuteFASolid())
         iconPerson.setTypeface(typeface)
@@ -77,8 +77,10 @@ class MainActivity : AppCompatActivity() {
     fun clickSearch(view:View){
         var ID: String = edt_search.text.toString()
         var isID:Boolean = GeneralHelper.validateIdPanama(ID)
+
         if(isID){
-         getResult(ID)
+            buttonValidate.isEnabled = false
+            getResult(ID)
         }
         else
             AnimationEditText.animateVibration(search,this)
@@ -101,7 +103,7 @@ class MainActivity : AppCompatActivity() {
                                         val `object` = array.getJSONObject(0)
                                         var resp: String = `object`.getString("cedula")
 
-                                lottieAnimationView.visibility = View.GONE
+                                        buttonValidate.isEnabled = true
 
                                         if(!resp.equals("0"))
                                         dialog(`object`.getString("nombre"),`object`.getString("apellido"),`object`.getString("cedula"),`object`.getString("salario"),`object`.getString("cargo"),`object`.getString("planilla"))
@@ -111,7 +113,7 @@ class MainActivity : AppCompatActivity() {
                             }
 
                         } catch (ex: Exception) {
-                            lottieAnimationView.visibility = View.GONE
+                            buttonValidate.isEnabled = true
                           GeneralHelper.simpleAlerts(this,"Error","Lo sentimos, ocurrio un error :(")
                         }
 
@@ -119,7 +121,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 },
                 Response.ErrorListener { error ->
-                    lottieAnimationView.visibility = View.GONE
+                    buttonValidate.isEnabled = true
                     GeneralHelper.simpleAlerts(this,"Error","Lo sentimos, ocurrio un error :(")
                 }
         ) {
