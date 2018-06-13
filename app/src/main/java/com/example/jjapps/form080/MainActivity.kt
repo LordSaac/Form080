@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -23,6 +24,9 @@ import com.airbnb.lottie.LottieAnimationView
 import kotlinx.android.synthetic.main.activity_main.*
 import com.example.jjapps.form080.anim.AnimationEditText
 import com.example.jjapps.form080.utils.VolleySingleton
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.MobileAds
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,10 +34,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var search: EditText
     private lateinit var iconPerson: TextView
     private lateinit var  buttonValidate: Button
+    private lateinit var mInterstitialAd: InterstitialAd
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         search = findViewById(R.id.edt_search)
         iconPerson = findViewById(R.id.icon_person)
         buttonValidate = findViewById(R.id.button)
@@ -41,6 +47,13 @@ class MainActivity : AppCompatActivity() {
         val typeface = Typeface.createFromAsset(this.assets, FontManager.getRuteFASolid())
         iconPerson.setTypeface(typeface)
         iconPerson.text = FontManager.fontUser
+
+
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713")
+
+        mInterstitialAd = InterstitialAd(this)
+        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
 
         activityCreateToolbar()
 
@@ -75,6 +88,14 @@ class MainActivity : AppCompatActivity() {
 
 
     fun clickSearch(view:View){
+
+
+        if (mInterstitialAd.isLoaded) {
+            mInterstitialAd.show()
+        } else {
+            Log.d("TAG", "The interstitial wasn't loaded yet.")
+        }
+
         var ID: String = edt_search.text.toString()
         var isID:Boolean = GeneralHelper.validateIdPanama(ID)
 
@@ -106,7 +127,7 @@ class MainActivity : AppCompatActivity() {
                                         buttonValidate.isEnabled = true
 
                                         if(!resp.equals("0"))
-                                        dialog(`object`.getString("nombre"),`object`.getString("apellido"),`object`.getString("cedula"),`object`.getString("salario"),`object`.getString("cargo"),`object`.getString("planilla"))
+                                             dialog(`object`.getString("nombre"),`object`.getString("apellido"),`object`.getString("cedula"),`object`.getString("salario"),`object`.getString("cargo"),`object`.getString("planilla"))
                                         else
                                             GeneralHelper.simpleAlerts(this,"Alerta","Esta identificación no aparece en la PLANILLA 080")
 
