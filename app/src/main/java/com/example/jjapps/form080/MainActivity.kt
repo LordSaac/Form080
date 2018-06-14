@@ -21,18 +21,18 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.example.jjapps.form080.utils.FontManager
 import com.example.jjapps.form080.utils.GeneralHelper
+import com.example.jjapps.form080.utils.VolleySingleton
 import org.json.JSONArray
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
-import com.airbnb.lottie.LottieAnimationView
 import kotlinx.android.synthetic.main.activity_main.*
 import com.example.jjapps.form080.anim.AnimationEditText
-import com.example.jjapps.form080.utils.VolleySingleton
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
+import xyz.goldapp.jjapps.form080.R
 
 
 class MainActivity : AppCompatActivity() {
@@ -156,7 +156,7 @@ class MainActivity : AppCompatActivity() {
                 40000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
-              VolleySingleton.getInstance(applicationContext).addToRequestque(postRequest)
+                VolleySingleton.getInstance(applicationContext).addToRequestque(postRequest)
     }
 
 

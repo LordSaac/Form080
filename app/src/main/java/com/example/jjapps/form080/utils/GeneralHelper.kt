@@ -13,7 +13,7 @@ import android.os.Vibrator
 import android.util.Base64
 import android.view.LayoutInflater
 import android.widget.EditText
-import com.example.jjapps.form080.BuildConfig
+import xyz.goldapp.jjapps.form080.BuildConfig
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.text.SimpleDateFormat

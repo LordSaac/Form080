@@ -3,7 +3,7 @@ package com.example.jjapps.form080.anim
 import android.content.Context
 import android.view.animation.AnimationUtils
 import android.widget.Spinner
-import com.example.jjapps.form080.R
+import xyz.goldapp.jjapps.form080.R
 
 /**
  * Created by jgutierrez on 3/19/2018.

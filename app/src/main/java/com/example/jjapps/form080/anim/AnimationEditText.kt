@@ -6,8 +6,7 @@ import android.widget.EditText
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.widget.TextView
-import com.example.jjapps.form080.R
-
+import xyz.goldapp.jjapps.form080.R
 
 /**
  * Created by jgutierrez on 3/19/2018.
